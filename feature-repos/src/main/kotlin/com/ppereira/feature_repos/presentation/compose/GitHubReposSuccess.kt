@@ -12,7 +12,12 @@ import com.ppereira.feature_repos.model.Page
 internal fun GitHubReposSuccess(
     page: Page
 ) {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            DefaultToolbar(showBackIcon = false)
+        }
+    ) { innerPadding ->
         Text(
             modifier = Modifier.padding(innerPadding),
             text = page.items.toString()

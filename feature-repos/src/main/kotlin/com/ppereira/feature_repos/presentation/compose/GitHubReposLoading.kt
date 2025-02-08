@@ -9,7 +9,12 @@ import androidx.compose.ui.Modifier
 
 @Composable
 internal fun GitHubReposLoading() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            DefaultToolbar(showBackIcon = false)
+        }
+    ) { innerPadding ->
         Text(
             modifier = Modifier.padding(innerPadding),
             text = "LOADING"
