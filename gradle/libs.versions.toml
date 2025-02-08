@@ -1,0 +1,88 @@
+# ------------------------------------------------------------------------------------------------ #
+[versions]
+
+## Androidx
+androidx-appcompat = "1.7.0"
+androidx-plugin = "8.8.0"
+androidx-lifecycle-runtime-ktx = "2.8.7"
+androidx-core-ktx = "1.15.0"
+androidx-junit = "1.2.1"
+androidx-espresso-core = "3.6.1"
+
+## AndroidX Compose
+androidx-compose-activity = "1.10.0"
+androidx-compose-bom = "2025.01.01"
+
+## Jetbrains
+jetbrains-kotlin = "2.0.21"
+
+## SquareUp
+square-retrofit = "2.11.0"
+square-okhttp = "4.12.0"
+square-moshi = "1.15.2"
+square-timber = "5.0.1"
+
+## Google
+google-ksp = "2.0.21-1.0.28"
+google-material = "1.12.0"
+
+## Tools
+tools-koin = "4.0.2"
+tools-junit = "4.13.2"
+
+# ------------------------------------------------------------------------------------------------ #
+[libraries]
+## JetBrains
+jetbrains-stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "jetbrains-kotlin" }
+
+## Androidx
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-runtime-ktx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-junit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
+
+## Androidx Compose
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-compose-activity" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+## Google
+material = { group = "com.google.android.material", name = "material", version.ref = "google-material" }
+
+## SquareUp
+square-moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "square-moshi" }
+square-moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "square-moshi" }
+square-okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "square-okhttp" }
+square-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "square-okhttp" }
+square-retrofit-main = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "square-retrofit" }
+square-retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "square-retrofit" }
+square-timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "square-timber" }
+
+## Tools
+android-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "tools-koin" }
+android-koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "tools-koin" }
+junit = { group = "junit", name = "junit", version.ref = "tools-junit" }
+
+# ------------------------------------------------------------------------------------------------ #
+[plugins]
+jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin" }
+
+## Android
+android-application = { id = "com.android.application", version.ref = "androidx-plugin" }
+android-library = { id = "com.android.library", version.ref = "androidx-plugin" }
+
+## Google
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
+
+## JetBrains
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrains-kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "jetbrains-kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "jetbrains-kotlin" }
+
