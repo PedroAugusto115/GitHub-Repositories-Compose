@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "GitHubRepos"
 include(":app")
 include(":networking")
-include(":feature-repos")
+include(":feature:repository-list")

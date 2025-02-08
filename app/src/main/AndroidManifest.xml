@@ -15,7 +15,7 @@
         android:theme="@style/Theme.GitHubRepos"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.ppereira.feature_repos.MainActivity"
+            android:name="com.ppereira.repository_list.GitHubActivity"
             android:exported="true"
             android:theme="@style/Theme.GitHubRepos">
             <intent-filter>

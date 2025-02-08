@@ -1,7 +1,7 @@
 package com.ppereira.gitrepo
 
 import android.app.Application
-import com.ppereira.feature_repos.di._featureRepoModule
+import com.ppereira.repository_list.di._featureRepoModule
 import com.ppereira.networking.di._networkModule
 import org.koin.core.context.startKoin
 
