@@ -17,9 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.ppereira.ui_core.component.ButtonLink
 import com.ppereira.ui_core.theme.GitHubReposTheme
+import com.ppereira.ui_core.theme.SpacingM
+import com.ppereira.ui_core.theme.SpacingXS
 
 @Composable
 internal fun GitHubReposError(
@@ -29,7 +30,7 @@ internal fun GitHubReposError(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = SpacingM)
             .testTag("repos_error_root"),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -38,7 +39,7 @@ internal fun GitHubReposError(
             painter = painterResource(id = com.ppereira.ui_core.R.drawable.octicons_github),
             contentDescription = "Error image icon"
         )
-        Spacer(modifier = Modifier.padding(top = 8.dp))
+        Spacer(modifier = Modifier.padding(top = SpacingXS))
         Text(
             modifier = Modifier,
             style = MaterialTheme.typography.titleMedium,

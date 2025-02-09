@@ -39,6 +39,14 @@ fun typography(darkTheme: Boolean) = Typography(
         letterSpacing = 0.5.sp,
         color = if (darkTheme) LightGray else DarkGray
     ),
+    bodySmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.5.sp,
+        color = if (darkTheme) LightGray else DarkGray
+    ),
     labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,

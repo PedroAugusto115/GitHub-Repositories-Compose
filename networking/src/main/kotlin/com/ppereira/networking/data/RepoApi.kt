@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface RepoApi {
     @GET("/search/repositories")
     suspend fun getJavaRepositories(
-        @Query("q") language: String = "language:Java",
+        @Query("q") language: String = "language:Kotlin",
         @Query("sort") sort: String = "stars",
         @Query("page") page: Int?
     ): Response<PageResponse>

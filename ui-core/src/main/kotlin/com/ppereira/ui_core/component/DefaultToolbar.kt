@@ -1,7 +1,5 @@
 package com.ppereira.ui_core.component
 
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,8 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.ppereira.ui_core.theme.GitHubReposTheme
+import com.ppereira.ui_core.theme.SpacingM
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,14 +58,13 @@ fun DefaultToolbar(showBackIcon: Boolean) {
     )
 }
 
-@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
-@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
+@PreviewLightDark
 @Composable
 private fun DefaultToolbarPreview() {
-    com.ppereira.ui_core.theme.GitHubReposTheme {
+    GitHubReposTheme {
         Column {
             DefaultToolbar(true)
-            Spacer(modifier = Modifier.padding(top = 16.dp))
+            Spacer(modifier = Modifier.padding(top = SpacingM))
             DefaultToolbar(false)
         }
     }

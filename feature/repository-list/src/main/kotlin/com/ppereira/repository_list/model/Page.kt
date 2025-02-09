@@ -19,9 +19,9 @@ data class Repository(
     val id: Long,
     val name: String,
     val description: String,
-    val numberOfForks: Long,
-    val numberOfWatchers: Long,
-    val numberOfOpenIssues: Long,
+    val numberOfForks: Int,
+    val numberOfWatchers: Int,
+    val numberOfOpenIssues: Int,
     val owner: Person
 ) {
     constructor(response: RepositoryResponse) : this(

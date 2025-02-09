@@ -1,7 +1,5 @@
 package com.ppereira.ui_core.component
 
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -28,10 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.ppereira.ui_core.theme.GitHubReposTheme
+import com.ppereira.ui_core.theme.SpacingL
+import com.ppereira.ui_core.theme.SpacingM
+import com.ppereira.ui_core.theme.SpacingS
 
 @Composable
 fun CircleShimmerEffect(
@@ -55,8 +56,8 @@ fun CardShimmerEffect(
         modifier = modifier
             .fillMaxWidth()
             .height(height)
-            .clip(RoundedCornerShape(12.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant, shape = RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(SpacingS))
+            .background(MaterialTheme.colorScheme.surfaceVariant, shape = RoundedCornerShape(SpacingS))
     )
 }
 
@@ -68,8 +69,8 @@ fun LineShimmerEffect(
     ShimmerEffect(
         modifier
             .width(width)
-            .height(20.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .height(SpacingL)
+            .clip(RoundedCornerShape(SpacingL))
             .background(MaterialTheme.colorScheme.surfaceVariant)
     )
 }
@@ -79,11 +80,9 @@ fun ProfileShimmerEffect(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(120.dp),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(
-            space = 16.dp,
+            space = SpacingM,
             alignment = Alignment.CenterHorizontally
         ),
         verticalAlignment = Alignment.CenterVertically
@@ -91,13 +90,25 @@ fun ProfileShimmerEffect(
         CircleShimmerEffect(80.dp)
         Column(
             modifier = Modifier
-                .weight(0.7f)
-                .height(60.dp)
         ) {
             LineShimmerEffect(320.dp)
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(SpacingS))
             LineShimmerEffect(120.dp)
+            Spacer(modifier = Modifier.height(4.dp))
+            LoadingCircles()
         }
+    }
+}
+
+@Composable
+private fun LoadingCircles() {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        CircleShimmerEffect(30.dp)
+        CircleShimmerEffect(30.dp)
+        CircleShimmerEffect(30.dp)
     }
 }
 
@@ -148,8 +159,7 @@ fun ShimmerEffect(
     }
 }
 
-@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
-@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+@PreviewLightDark
 @Composable
 fun ShimmerEffectPreview() {
     GitHubReposTheme {
@@ -157,15 +167,12 @@ fun ShimmerEffectPreview() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
-                .padding(all = 16.dp)
+                .padding(all = SpacingM)
         ) {
-
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(SpacingL))
 
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Absolute.SpaceBetween
             ) {
                 repeat(5) {
@@ -173,11 +180,15 @@ fun ShimmerEffectPreview() {
                 }
             }
 
+            Spacer(modifier = Modifier.height(SpacingL))
+
             CardShimmerEffect(60.dp)
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(SpacingL))
 
             ProfileShimmerEffect()
+
+            Spacer(modifier = Modifier.height(SpacingL))
 
             CardShimmerEffect(220.dp)
         }

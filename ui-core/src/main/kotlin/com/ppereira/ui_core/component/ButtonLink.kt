@@ -1,6 +1,5 @@
 package com.ppereira.ui_core.component
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,13 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.ppereira.ui_core.theme.DarkBlue
 import com.ppereira.ui_core.theme.DarkBlueAlpha
 import com.ppereira.ui_core.theme.GitHubReposTheme
 import com.ppereira.ui_core.theme.LightBlue
 import com.ppereira.ui_core.theme.LightBlueAlpha
+import com.ppereira.ui_core.theme.SpacingM
+import com.ppereira.ui_core.theme.SpacingS
 
 @Composable
 fun ButtonLink(
@@ -29,21 +29,20 @@ fun ButtonLink(
     Text(
         modifier = Modifier
             .clickable(role = Role.Button) { onClick.invoke() }
-            .padding(all = 16.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .padding(all = SpacingM)
+            .clip(RoundedCornerShape(SpacingS))
             .background(
                 if (isSystemInDarkTheme()) LightBlueAlpha else DarkBlueAlpha,
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(SpacingS)
             )
-            .padding(all = 16.dp),
+            .padding(all = SpacingM),
         style = MaterialTheme.typography.titleMedium,
         text = label,
         color = if (isSystemInDarkTheme()) LightBlue else DarkBlue
     )
 }
 
-@Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(name = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO)
+@PreviewLightDark
 @Composable
 private fun ButtonLinkPreview() {
     GitHubReposTheme {
