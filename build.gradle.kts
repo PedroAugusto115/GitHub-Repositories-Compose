@@ -5,4 +5,21 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.detekt)
+}
+
+val detektFormatting = libs.detekt.formatting
+
+subprojects {
+    apply {
+        plugin("io.gitlab.arturbosch.detekt")
+    }
+
+    detekt {
+        config.from(rootProject.files("tools/detekt-config.yml"))
+    }
+
+    dependencies {
+        detektPlugins(detektFormatting)
+    }
 }

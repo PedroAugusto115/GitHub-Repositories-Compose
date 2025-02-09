@@ -1,8 +1,9 @@
 package com.ppereira.gitrepo
 
 import android.app.Application
-import com.ppereira.repository_list.di._featureRepoModule
-import com.ppereira.networking.di._networkModule
+import com.ppereira.repository_list.di.featureRepoModule
+import com.ppereira.networking.di.networkModule
+import com.ppereira.pull_request_list.di.featurePullRequestModule
 import org.koin.core.context.startKoin
 
 class GitHubReposApplication : Application() {
@@ -11,8 +12,9 @@ class GitHubReposApplication : Application() {
 
         startKoin {
             modules(
-                _networkModule,
-                _featureRepoModule
+                networkModule,
+                featureRepoModule,
+                featurePullRequestModule
             )
         }
     }

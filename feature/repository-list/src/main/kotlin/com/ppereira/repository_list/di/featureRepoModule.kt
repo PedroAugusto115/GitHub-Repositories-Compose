@@ -6,7 +6,7 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
-val _featureRepoModule = module {
+val featureRepoModule = module {
     singleOf(::GitHubReposRepository)
     viewModel { GitHubReposViewModel(get()) }
 }

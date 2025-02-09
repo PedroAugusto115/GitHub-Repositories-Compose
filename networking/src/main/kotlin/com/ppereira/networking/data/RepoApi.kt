@@ -2,8 +2,6 @@ package com.ppereira.networking.data
 
 import com.ppereira.networking.model.PageResponse
 import com.ppereira.networking.model.PullRequestResponse
-import kotlinx.coroutines.flow.Flow
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

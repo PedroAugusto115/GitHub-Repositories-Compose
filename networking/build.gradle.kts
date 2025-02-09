@@ -35,6 +35,7 @@ dependencies {
     api(libs.square.okhttp.logging)
     api(libs.square.timber)
     api(libs.android.koin)
+    api(libs.android.coil.http)
 
     ksp(libs.square.moshi.codegen)
 }

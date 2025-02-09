@@ -1,5 +1,7 @@
 # ------------------------------------------------------------------------------------------------ #
 [versions]
+## Plugins
+detekt = "1.23.7"
 
 ## Androidx
 androidx-appcompat = "1.7.0"
@@ -29,6 +31,7 @@ google-material = "1.12.0"
 ## Tools
 tools-koin = "4.0.2"
 tools-junit = "4.13.2"
+tools-coil = "3.1.0"
 
 # ------------------------------------------------------------------------------------------------ #
 [libraries]
@@ -68,6 +71,10 @@ square-timber = { group = "com.jakewharton.timber", name = "timber", version.ref
 ## Tools
 android-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "tools-koin" }
 android-koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "tools-koin" }
+android-coil-http = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "tools-coil" }
+android-coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "tools-coil" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+detekt = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
 junit = { group = "junit", name = "junit", version.ref = "tools-junit" }
 
 # ------------------------------------------------------------------------------------------------ #
@@ -85,4 +92,7 @@ google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrains-kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "jetbrains-kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "jetbrains-kotlin" }
+
+## Tools
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
