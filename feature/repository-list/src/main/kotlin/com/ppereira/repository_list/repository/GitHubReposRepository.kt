@@ -11,12 +11,16 @@ class GitHubReposRepository(private val api: ApiProvider) {
     suspend fun listRepositories(): Flow<PageResponse> {
         val call = api.githubApi.getJavaRepositories(page = 1)
         return flow {
-            if (call.isSuccessful && call.body() != null) {
-                val page = call.getNextPage()
-                val response = call.body()!!
-                response.nextPage = page
-                emit(response)
-            } else {
+            try {
+                if (call.isSuccessful && call.body() != null) {
+                    val page = call.getNextPage()
+                    val response = call.body()!!
+                    response.nextPage = page
+                    emit(response)
+                } else {
+                    throw Exception()
+                }
+            } catch (ex: Exception) {
                 throw Exception()
             }
         }

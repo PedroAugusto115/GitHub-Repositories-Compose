@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.ppereira.repository_list.presentation.compose.GitHubReposScreen
-import com.ppereira.repository_list.ui.theme.GitHubReposTheme
+import com.ppereira.ui_core.theme.GitHubReposTheme
 
 class GitHubActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

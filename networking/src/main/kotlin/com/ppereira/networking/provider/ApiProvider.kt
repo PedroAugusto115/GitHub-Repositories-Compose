@@ -19,16 +19,15 @@ class ApiProvider {
         .build()
 
     private val okHttp: OkHttpClient by lazy {
-        val logging = HttpLoggingInterceptor { Timber.tag("OkHttp").i(it) }.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val logging = HttpLoggingInterceptor { Timber.tag("OkHttp").i(it) }
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder().addInterceptor(logging).build()
     }
 
     private val retrofit: Retrofit =
         Retrofit.Builder()
-            /* Add default configurations */
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttp)
             .baseUrl("https://api.github.com/")
-            /* Finish Retrofit creation */
             .build()
 }

@@ -2,15 +2,16 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
-    namespace = "com.ppereira.repository_list"
+    namespace = "com.ppereira.ui_core"
     compileSdk = 35
 
     defaultConfig {
         minSdk = 26
+        targetSdk = 35
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,9 +30,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":networking"))
-    implementation(project(":ui-core"))
-
+    implementation(libs.google.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.compose.activity)
@@ -40,12 +39,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.android.koin.compose)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

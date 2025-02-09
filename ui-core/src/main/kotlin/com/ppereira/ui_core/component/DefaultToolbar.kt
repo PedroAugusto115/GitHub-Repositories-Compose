@@ -1,7 +1,12 @@
-package com.ppereira.repository_list.presentation.compose
+package com.ppereira.ui_core.component
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,12 +23,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import com.ppereira.repository_list.ui.theme.GitHubReposTheme
-import com.ppereira.repository_list.ui.theme.Typography
+import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun DefaultToolbar(showBackIcon: Boolean) {
+fun DefaultToolbar(showBackIcon: Boolean) {
     val backPress = LocalOnBackPressedDispatcherOwner.current
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
@@ -35,7 +39,7 @@ internal fun DefaultToolbar(showBackIcon: Boolean) {
             ){
                 Text(
                     modifier = Modifier.semantics { heading() }.testTag("toolbar_default"),
-                    style = Typography.titleLarge,
+                    style = MaterialTheme.typography.titleLarge,
                     text = "GitHub Repositories"
                 )
             }
@@ -55,10 +59,15 @@ internal fun DefaultToolbar(showBackIcon: Boolean) {
     )
 }
 
-@Preview(showSystemUi = true, )
+@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 private fun DefaultToolbarPreview() {
-    GitHubReposTheme {
-        DefaultToolbar(false)
+    com.ppereira.ui_core.theme.GitHubReposTheme {
+        Column {
+            DefaultToolbar(true)
+            Spacer(modifier = Modifier.padding(top = 16.dp))
+            DefaultToolbar(false)
+        }
     }
 }
