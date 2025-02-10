@@ -1,9 +1,10 @@
 package com.ppereira.repository_list.model
 
+import android.os.Parcelable
 import com.ppereira.networking.model.PageResponse
 import com.ppereira.networking.model.PersonResponse
-import com.ppereira.networking.model.PullRequestResponse
 import com.ppereira.networking.model.RepositoryResponse
+import kotlinx.parcelize.Parcelize
 
 data class Page(
     val items: List<Repository>,
@@ -15,6 +16,7 @@ data class Page(
     )
 }
 
+@Parcelize
 data class Repository(
     val id: Long,
     val name: String,
@@ -23,7 +25,7 @@ data class Repository(
     val numberOfWatchers: Int,
     val numberOfOpenIssues: Int,
     val owner: Person
-) {
+): Parcelable {
     constructor(response: RepositoryResponse) : this(
         id = response.id,
         name = response.name,
@@ -35,28 +37,11 @@ data class Repository(
     )
 }
 
-data class PullRequest(
-    val id: Long,
-    val title: String,
-    val description: String = "",
-    val user: Person,
-    val dateCreated: String,
-    val pullRequestUrl: String
-) {
-    constructor(response: PullRequestResponse) : this(
-        id = response.id,
-        title = response.title,
-        description = response.description,
-        user = Person(response.user),
-        dateCreated = response.dateCreated,
-        pullRequestUrl = response.pullRequestUrl,
-    )
-}
-
+@Parcelize
 data class Person(
     val name: String,
     val avatarUrl: String
-) {
+): Parcelable {
     constructor(response: PersonResponse) : this(
         name = response.name,
         avatarUrl = response.avatarUrl

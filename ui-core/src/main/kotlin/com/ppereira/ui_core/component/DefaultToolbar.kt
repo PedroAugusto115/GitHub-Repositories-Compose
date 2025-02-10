@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,12 +22,18 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
 import com.ppereira.ui_core.theme.GitHubReposTheme
 import com.ppereira.ui_core.theme.SpacingM
+import com.ppereira.ui_core.theme.SpacingXS
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DefaultToolbar(showBackIcon: Boolean) {
+fun DefaultToolbar(
+    showBackIcon: Boolean,
+    name: String = "GitHub Repositories",
+    avatarUrl: String? = null
+) {
     val backPress = LocalOnBackPressedDispatcherOwner.current
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
@@ -36,10 +43,17 @@ fun DefaultToolbar(showBackIcon: Boolean) {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
+                avatarUrl?.let { avatar ->
+                    AsyncRepoImage(
+                        url = avatar,
+                        size = 24.dp
+                    )
+                    Spacer(modifier = Modifier.width(SpacingXS))
+                }
                 Text(
                     modifier = Modifier.semantics { heading() }.testTag("toolbar_default"),
                     style = MaterialTheme.typography.titleLarge,
-                    text = "GitHub Repositories"
+                    text = name
                 )
             }
         },

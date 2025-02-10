@@ -1,7 +1,6 @@
 package com.ppereira.repository_list.presentation.compose
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -22,9 +21,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter.Companion.tint
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
@@ -32,7 +30,9 @@ import com.ppereira.repository_list.model.Page
 import com.ppereira.repository_list.model.Person
 import com.ppereira.repository_list.model.Repository
 import com.ppereira.ui_core.component.AsyncRepoImage
+import com.ppereira.ui_core.component.GitItemCounters
 import com.ppereira.ui_core.theme.GitHubReposTheme
+import com.ppereira.ui_core.theme.SpacingL
 import com.ppereira.ui_core.theme.SpacingM
 import com.ppereira.ui_core.theme.SpacingS
 
@@ -42,16 +42,23 @@ internal fun GitHubReposSuccess(
     modifier: Modifier = Modifier
 ) {
     val state = rememberLazyListState()
+    val context = LocalContext.current
     LazyColumn(
         state = state,
         modifier = modifier
             .testTag("repos_list_root")
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(SpacingM)
+        verticalArrangement = Arrangement.spacedBy(SpacingL)
     ) {
         items(page.items) { repository ->
             GitHubRepoItem(repository) {
-                // TODO: Calls Pull Request screen
+                context.startActivity(
+                    Intent("android.intent.action.PULL_REQUEST").apply {
+                        putExtra("REPOSITORY", repository.name)
+                        putExtra("OWNER", repository.owner.name)
+                        putExtra("OWNER_URL", repository.owner.avatarUrl)
+                    }
+                )
             }
         }
     }
@@ -84,56 +91,12 @@ private fun GitHubRepoItem(
                 text = repository.description.take(100),
             )
             Spacer(modifier = Modifier.height(4.dp))
-            GitHubRepoItemCounters(
+            GitItemCounters(
                 repository.numberOfForks,
                 repository.numberOfOpenIssues,
                 repository.numberOfWatchers
             )
         }
-    }
-}
-
-@Composable
-private fun GitHubRepoItemCounters(
-    numberOfForks: Int,
-    numberOfOpenIssues: Int,
-    numberOfWatchers: Int
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        TextIcon(
-            icon = com.ppereira.ui_core.R.drawable.icon_eye,
-            text = numberOfWatchers.toString()
-        )
-        TextIcon(
-            icon = com.ppereira.ui_core.R.drawable.icon_branch,
-            text = numberOfForks.toString()
-        )
-        TextIcon(
-            icon = com.ppereira.ui_core.R.drawable.icon_issue,
-            text = numberOfOpenIssues.toString()
-        )
-    }
-}
-
-@Composable
-private fun TextIcon(
-    text: String,
-    @DrawableRes icon: Int
-) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(
-            painter = painterResource(icon),
-            contentDescription = null,
-            colorFilter = tint(color = MaterialTheme.colorScheme.primary)
-        )
-        Text(
-            style = MaterialTheme.typography.titleMedium,
-            text = text,
-            color = MaterialTheme.colorScheme.primary
-        )
     }
 }
 

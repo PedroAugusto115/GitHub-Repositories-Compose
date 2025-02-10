@@ -8,7 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.ppereira.repository_list.presentation.model.UiState
+import com.ppereira.networking.ui.UiState
+import com.ppereira.repository_list.model.Page
 import com.ppereira.repository_list.viewmodel.GitHubReposViewModel
 import com.ppereira.ui_core.component.DefaultToolbar
 import org.koin.androidx.compose.koinViewModel
@@ -35,10 +36,12 @@ internal fun GitHubReposScreen(
                 onRetry = { viewModel.getRepositories() },
                 modifier = Modifier.padding(innerPadding)
             )
-            is UiState.Success -> GitHubReposSuccess(
-                (state.value as UiState.Success).results,
+
+            is UiState.Success<*> -> GitHubReposSuccess(
+                (state.value as UiState.Success<Page>).results,
                 modifier = Modifier.padding(innerPadding)
             )
+
             is UiState.Empty -> GitHubReposEmpty(modifier = Modifier.padding(innerPadding))
         }
     }

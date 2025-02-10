@@ -1,9 +1,9 @@
 package com.ppereira.gitrepo
 
 import android.app.Application
-import com.ppereira.repository_list.di.featureRepoModule
 import com.ppereira.networking.di.networkModule
 import com.ppereira.pull_request_list.di.featurePullRequestModule
+import com.ppereira.repository_list.di.featureRepoModule
 import org.koin.core.context.startKoin
 
 class GitHubReposApplication : Application() {
